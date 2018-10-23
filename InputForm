@@ -1,0 +1,42 @@
+from bottle import route, run, template, request, post
+
+@route('/')
+@route('/hello/<name>')
+def greet(name='Stranger'):
+    return template('Hello {{name}}, how are you?', name=name)
+
+
+@route('/hello')
+def hello():
+    return "hello World!"
+
+
+@post('/login')
+def login():
+    postdata = request.body.read()
+    print(postdata)
+    username = request.forms.get("username")
+    password = request.forms.get("password")
+    print("Username = " + username)
+    print("Password = " + password)
+    return template('Hello {{username}}, how are you?', username=use$
+
+@route('/login')
+Hello. Please input your Wifi name and password below.
+def login():
+    return '''
+        <form action="/login" method="post">
+            Username: <input name="username" type="text" />
+            Password: <input name="password" type="password" />
+            <input value="Login" type="submit" />
+        console.log(username)
+        console.log(password)
+        </form>
+'''
+
+run(host='localhost', port=8000, debug=True)
+
+
+
+#learn to use Python to write file into local directory
+#extract ssid, psk
