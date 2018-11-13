@@ -5,11 +5,9 @@ from bottle import route, run, template, request, post
 def greet(name='Stranger'):
     return template('Hello {{name}}, how are you?', name=name)
 
-
 @route('/hello')
 def hello():
     return "hello World!"
-
 
 @post('/login')
 def login():
@@ -19,24 +17,26 @@ def login():
     password = request.forms.get("password")
     print("Username = " + username)
     print("Password = " + password)
-    return template('Hello {{username}}, how are you?', username=use$
+    with open('WiFiPassword1.txt', 'w') as f:
+        print('ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev', file=$
+        print('network={', file=f)
+        print('    ssid=' + username, file=f)
+        print('    psk=' + password, file=f)
+        print('    key_mgmt=WPA-PSK', file=f)
+        print('}', file=f)
+    return template('Hello {{username}}, how are you?', username=username)
 
 @route('/login')
-Hello. Please input your Wifi name and password below.
 def login():
     return '''
         <form action="/login" method="post">
             Username: <input name="username" type="text" />
             Password: <input name="password" type="password" />
             <input value="Login" type="submit" />
-        console.log(username)
-        console.log(password)
+
         </form>
 '''
 
 run(host='localhost', port=8000, debug=True)
-
-
-
-#learn to use Python to write file into local directory
-#extract ssid, psk
+with open('WiFiPassword1.txt', 'w') as f:
+     print('username, password', file=f)
